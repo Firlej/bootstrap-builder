@@ -5,14 +5,17 @@ package pl.put.poznan.transformer.logic;
  */
 public class TextTransformer {
 
-    private final String[] transforms;
+    String header;
+    String footer;
 
-    public TextTransformer(String[] transforms){
-        this.transforms = transforms;
+
+
+    public TextTransformer(String _header, String _footer){
+        header = _header;
+        footer = _footer;
     }
 
-    public String transform(String text){
-        // of course, normally it would do something based on the transforms
-        return text.toUpperCase();
+    public String render(){
+        return header + " " + footer;
     }
 }

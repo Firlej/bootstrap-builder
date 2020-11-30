@@ -8,35 +8,37 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/builder")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+    public String get(
+            @RequestParam(value="header", defaultValue="static") String header,
+            @RequestParam(value="footer", defaultValue="true") String footer
+    ) {
 
         // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+//        logger.debug(text);
+        logger.debug(header);
+//        logger.debug(Arrays.toString(header));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TextTransformer builder = new TextTransformer(header, footer);
+        return builder.render();
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
+    public String post(@PathVariable String text, @RequestBody String[] transforms) {
 
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TextTransformer transformer = new TextTransformer("a", "b");
+        return transformer.render();
     }
 
 
