@@ -1,4 +1,4 @@
-# bootstrap-builder
+# bootstrap-builder ![Build status](https://travis-ci.org/Firlej/bootstrap-builder.svg?branch=master)
 
 ### DoD
 https://docs.google.com/spreadsheets/d/e/2PACX-1vQndYCJCWd-LgB0E3TjUa2sMFUaV2M-3plaVgLB61xtYDLnorXlL9trQWuSvEYVByVTUqGMZVzwPiEJ/pubhtml
