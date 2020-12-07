@@ -1,17 +1,17 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.builder.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.builder.logic.BootstrapBuilder;
 
 import java.util.Arrays;
 
 
 @RestController
 @RequestMapping("/builder")
-public class TextTransformerController {
+public class BootstrapBuilderController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BootstrapBuilderController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(
@@ -25,7 +25,7 @@ public class TextTransformerController {
 //        logger.debug(Arrays.toString(header));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer builder = new TextTransformer(header, footer);
+        BootstrapBuilder builder = new BootstrapBuilder(header, footer);
         return builder.render();
     }
 
@@ -37,7 +37,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer("a", "b");
+        BootstrapBuilder transformer = new BootstrapBuilder("a", "b");
         return transformer.render();
     }
 
