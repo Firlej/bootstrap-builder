@@ -4,9 +4,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.builder.logic.BootstrapBuilder;
 
-import java.util.Arrays;
-
-
 @RestController
 @RequestMapping("/builder")
 public class BootstrapBuilderController {
@@ -15,34 +12,44 @@ public class BootstrapBuilderController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(
-            @RequestParam(value="header", defaultValue="static") String header,
-            @RequestParam(value="footer", defaultValue="true") String footer
+            @RequestParam(value="header", defaultValue="static\n\n") String header,
+            @RequestParam(value="footer", defaultValue="\n\nfalse") String footer
     ) {
-
-        // log the parameters
-//        logger.debug(text);
+//      log the parameters
         logger.debug(header);
-//        logger.debug(Arrays.toString(header));
 
-        // perform the transformation, you should run your logic here, below is just a silly example
-        BootstrapBuilder builder = new BootstrapBuilder(header, footer);
-        return builder.render();
+        BootstrapBuilder director = new BootstrapBuilder.Builder()
+                .setPreHeader()
+                .setHeader(header)
+                .setPostHeader()
+                .setFooter(footer)
+                .setPostFooter()
+                .build();
+
+        return director.toString();
     }
 
+    // TODO: 20/12/2020 post not working correctly 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@PathVariable String text, @RequestBody String[] transforms) {
+    public String post(
+            @RequestParam(value="header", defaultValue="static\n\n") String header,
+            @RequestParam(value="footer", defaultValue="\n\nfalse") String footer
+//            @RequestBody BootstrapBuilder info
+    ) {
+//      log the parameters
+        logger.debug(header);
 
-        // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+        System.out.println(header);
+        System.out.println(footer);
 
-        // perform the transformation, you should run your logic here, below is just a silly example
-        BootstrapBuilder transformer = new BootstrapBuilder("a", "b");
-        return transformer.render();
+        BootstrapBuilder director = new BootstrapBuilder.Builder()
+                .setPreHeader()
+                .setHeader(header)
+                .setPostHeader()
+                .setFooter(footer)
+                .setPostFooter()
+                .build();
+
+        return director.toString();
     }
-
-
-
 }
-
-
