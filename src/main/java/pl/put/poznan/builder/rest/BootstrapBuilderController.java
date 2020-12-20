@@ -1,8 +1,11 @@
 package pl.put.poznan.builder.rest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.builder.logic.BootstrapBuilder;
+import pl.put.poznan.builder.logic.Request;
+
 
 @RestController
 @RequestMapping("/builder")
@@ -12,11 +15,13 @@ public class BootstrapBuilderController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(
-            @RequestParam(value="header", defaultValue="static\n\n") String header,
-            @RequestParam(value="footer", defaultValue="\n\nfalse") String footer
+            @RequestParam(value = "header", defaultValue = "static") String header,
+            @RequestParam(value = "footer", defaultValue = "false") String footer
     ) {
-//      log the parameters
-        logger.debug(header);
+//        logger.debug(header);
+
+//        System.out.println(header);
+//        System.out.println(footer);
 
         BootstrapBuilder director = new BootstrapBuilder.Builder()
                 .setPreHeader()
@@ -29,24 +34,17 @@ public class BootstrapBuilderController {
         return director.toString();
     }
 
-    // TODO: 20/12/2020 post not working correctly 
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(
-            @RequestParam(value="header", defaultValue="static\n\n") String header,
-            @RequestParam(value="footer", defaultValue="\n\nfalse") String footer
-//            @RequestBody BootstrapBuilder info
-    ) {
-//      log the parameters
-        logger.debug(header);
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public String post(@RequestBody Request request) {
 
-        System.out.println(header);
-        System.out.println(footer);
+//        System.out.println(request.header);
+//        System.out.println(request.footer);
 
         BootstrapBuilder director = new BootstrapBuilder.Builder()
                 .setPreHeader()
-                .setHeader(header)
+                .setHeader(request.header)
                 .setPostHeader()
-                .setFooter(footer)
+                .setFooter(request.footer)
                 .setPostFooter()
                 .build();
 

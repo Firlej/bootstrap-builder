@@ -26,7 +26,7 @@ public class BootstrapBuilder {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String page = "";
         if (preHeader != null) {
             page += preHeader;
@@ -45,6 +45,26 @@ public class BootstrapBuilder {
         }
 
         return page;
+    }
+
+    public String getPreHeader() {
+        return preHeader;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public String getPostHeader() {
+        return postHeader;
+    }
+
+    public String getFooter() {
+        return footer;
+    }
+
+    public String getPostFooter() {
+        return postFooter;
     }
 
     public static class Builder {
@@ -99,7 +119,7 @@ public class BootstrapBuilder {
         }
 
         public Builder setFooter(String foot) {
-            // TODO: 20/12/2020 footer.txt content needs to be created 
+            // TODO: 20/12/2020 footer.txt content needs to be created
             Path path = Paths.get("./src/main/resources/4.footer.txt");
             if (foot.equals("true")) {
                 try {
@@ -124,26 +144,5 @@ public class BootstrapBuilder {
         public BootstrapBuilder build() {
             return new BootstrapBuilder(preHeader, header, postHeader, footer, postFooter);
         }
-    }
-
-
-    public String getPreHeader() {
-        return preHeader;
-    }
-
-    public String getHeader() {
-        return header;
-    }
-
-    public String getPostHeader() {
-        return postHeader;
-    }
-
-    public String getFooter() {
-        return footer;
-    }
-
-    public String getPostFooter() {
-        return postFooter;
     }
 }
