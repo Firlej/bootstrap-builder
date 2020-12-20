@@ -3,8 +3,7 @@ package pl.put.poznan.builder.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.builder.logic.BootstrapBuilder;
-import pl.put.poznan.builder.logic.Request;
+import pl.put.poznan.builder.logic.*;
 
 
 @RestController
@@ -18,36 +17,18 @@ public class BootstrapBuilderController {
             @RequestParam(value = "header", defaultValue = "static") String header,
             @RequestParam(value = "footer", defaultValue = "false") String footer
     ) {
-//        logger.debug(header);
+        logger.info("GET header: " + header);
+        logger.info("GET footer: " + footer);
 
-//        System.out.println(header);
-//        System.out.println(footer);
-
-        BootstrapBuilder director = new BootstrapBuilder.Builder()
-                .setPreHeader()
-                .setHeader(header)
-                .setPostHeader()
-                .setFooter(footer)
-                .setPostFooter()
-                .build();
-
-        return director.toString();
+        return Director.construct(header, footer).toString();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public String post(@RequestBody Request request) {
 
-//        System.out.println(request.header);
-//        System.out.println(request.footer);
+        logger.info("POST header: " + request.header);
+        logger.info("POST footer: " + request.footer);
 
-        BootstrapBuilder director = new BootstrapBuilder.Builder()
-                .setPreHeader()
-                .setHeader(request.header)
-                .setPostHeader()
-                .setFooter(request.footer)
-                .setPostFooter()
-                .build();
-
-        return director.toString();
+        return Director.construct(request.header, request.footer).toString();
     }
 }
