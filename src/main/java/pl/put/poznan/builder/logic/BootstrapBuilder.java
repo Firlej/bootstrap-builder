@@ -1,5 +1,10 @@
 package pl.put.poznan.builder.logic;
+/*
 
+    klasa builder
+
+
+ */
 public class BootstrapBuilder {
 
     private String preHeader;

@@ -2,10 +2,10 @@
 	<a class="navbar-brand" href="#">Navbar</a>
 
 	<div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-    /div>
+		<ul class="navbar-nav mr-auto">
+  			<li class="nav-item active">
+    			<a class="nav-link">Home <span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	</div>
 </nav>
