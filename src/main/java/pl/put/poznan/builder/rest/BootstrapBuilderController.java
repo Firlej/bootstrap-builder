@@ -20,20 +20,10 @@ public class BootstrapBuilderController {
             @RequestParam(value = "header", defaultValue = "static") String header,
             @RequestParam(value = "footer", defaultValue = "false") String footer
     ) {
-//        logger.debug(header);
+        logger.info("GET header: " + header);
+        logger.info("GET footer: " + footer);
 
-//        System.out.println(header);
-//        System.out.println(footer);
-
-        BootstrapBuilder director = new BootstrapBuilder.Builder()
-                .setPreHeader()
-                .setHeader(header)
-                .setPostHeader()
-                .setFooter(footer)
-                .setPostFooter()
-                .build();
-
-        return director.toString();
+        return Director.construct(header, footer).toString();
     }
 
 //    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -71,6 +61,6 @@ public class BootstrapBuilderController {
                 .setPostFooter()
                 .build();
 
-        return director.toString();
+        return Director.construct(request.header, request.footer).toString();
     }
 }
