@@ -1,9 +1,7 @@
 package pl.put.poznan.builder.logic;
-/*
 
-    BoostrapBuilder class
-
-
+/**
+    It holds parts of a website and is able to return fully constructed one
  */
 public class BootstrapBuilder {
 
@@ -13,7 +11,7 @@ public class BootstrapBuilder {
     private String footer;
     private String postFooter;
 
-    /*
+    /**
     Class constructor
      */
     public BootstrapBuilder(String preHeader, String header, String postHeader, String footer, String postFooter) {
@@ -24,8 +22,9 @@ public class BootstrapBuilder {
         this.postFooter = postFooter;
     }
 
-    /*
-    method adding elements to a page
+    /**
+     * Binds parts to one complete website from available attributes
+     * @return String
      */
     @Override
     public String toString() {

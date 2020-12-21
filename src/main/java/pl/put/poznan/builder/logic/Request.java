@@ -1,6 +1,6 @@
 package pl.put.poznan.builder.logic;
-/*
-Request class
+/**
+ * Used to receive data using POST method of REST API
 */
 public class Request {
     public String header;
