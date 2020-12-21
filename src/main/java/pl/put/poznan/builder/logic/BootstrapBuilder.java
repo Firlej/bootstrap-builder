@@ -1,7 +1,7 @@
 package pl.put.poznan.builder.logic;
 /*
 
-    klasa builder
+    BoostrapBuilder class
 
 
  */
@@ -13,6 +13,9 @@ public class BootstrapBuilder {
     private String footer;
     private String postFooter;
 
+    /*
+    Class constructor
+     */
     public BootstrapBuilder(String preHeader, String header, String postHeader, String footer, String postFooter) {
         this.preHeader = preHeader;
         this.header = header;
@@ -21,6 +24,9 @@ public class BootstrapBuilder {
         this.postFooter = postFooter;
     }
 
+    /*
+    method adding elements to a page
+     */
     @Override
     public String toString() {
         String page = "";
@@ -42,6 +48,7 @@ public class BootstrapBuilder {
 
         return page;
     }
+
 
     public String getPreHeader() {
         return preHeader;
