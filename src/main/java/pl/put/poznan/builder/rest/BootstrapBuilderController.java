@@ -2,65 +2,31 @@ package pl.put.poznan.builder.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import pl.put.poznan.builder.logic.BootstrapBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import pl.put.poznan.builder.logic.Director;
 
 
-@RestController
-@RequestMapping("/builder")
+@Controller
 public class BootstrapBuilderController {
 
     private static final Logger logger = LoggerFactory.getLogger(BootstrapBuilderController.class);
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(
-            @RequestParam(value = "header", defaultValue = "static") String header,
-            @RequestParam(value = "footer", defaultValue = "false") String footer
-    ) {
-        logger.info("GET header: " + header);
-        logger.info("GET footer: " + footer);
-
-        return Director.construct(header, footer).toString();
+    @GetMapping("/builder")
+    public String builderFrom(Model model) {
+        model.addAttribute("request", new BuilderRequest("fixed","true"));
+        return "ui";
     }
 
-//    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-//    public String post(@RequestBody Request request) {
-//
-//        System.out.println(request);
-//        System.out.println(request.header);
-//        System.out.println(request.footer);
-//
-//        BootstrapBuilder director = new BootstrapBuilder.Builder()
-//                .setPreHeader()
-//                .setHeader(request.header)
-//                .setPostHeader()
-//                .setFooter(request.footer)
-//                .setPostFooter()
-//                .build();
-//
-//        return director.toString();
-//    }
+    @PostMapping("/builder")
+    public String builderSubmit(@ModelAttribute BuilderRequest builderRequest, Model model) {
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String post(
-            @RequestParam(value = "header", defaultValue = "static") String header,
-            @RequestParam(value = "footer", defaultValue = "false") String footer
-    ) {
+        logger.info("header: " + builderRequest.getHeader());
+        logger.info("footer: " + builderRequest.getFooter());
 
-//        System.out.println(header);
-//        System.out.println(footer);
-
-        BootstrapBuilder director = new BootstrapBuilder.Builder()
-                .setPreHeader()
-                .setHeader(header)
-                .setPostHeader()
-                .setFooter(footer)
-                .setPostFooter()
-                .build();
-
-        return Director.construct(request.header, request.footer).toString();
+        String template = Director.construct(builderRequest.getHeader(), builderRequest.getFooter()).toString();
+        model.addAttribute("template", template);
+        return "return";
     }
 }

@@ -26,7 +26,7 @@ public class Builder {
      * @return Builder
      */
     public Builder setPreHeader() {
-        Path path = Paths.get("./src/main/resources/1.pre_header.txt");
+        Path path = Paths.get("./src/main/resources/our_template/1.pre_header.txt");
         try {
             preHeader = Files.readString(path, StandardCharsets.US_ASCII);
         } catch (IOException ex) {
@@ -45,10 +45,10 @@ public class Builder {
         Path path;
         switch (type) {
             case ("static"):
-                path = Paths.get("./src/main/resources/2.header_static.txt");
+                path = Paths.get("./src/main/resources/our_template/2.header_static.txt");
                 break;
             case ("fixed"):
-                path = Paths.get("./src/main/resources/2.header_fixed.txt");
+                path = Paths.get("./src/main/resources/our_template/2.header_fixed.txt");
                 break;
             default:
                 return this;
@@ -68,7 +68,7 @@ public class Builder {
      * @return Builder
      */
     public Builder setPostHeader() {
-        Path path = Paths.get("./src/main/resources/3.between_header_and_footer.txt");
+        Path path = Paths.get("./src/main/resources/our_template/3.between_header_and_footer.txt");
         try {
             postHeader = Files.readString(path, StandardCharsets.US_ASCII);
         } catch (IOException ex) {
@@ -84,7 +84,7 @@ public class Builder {
      * @return Builder
      */
     public Builder setFooter(String foot) {
-        Path path = Paths.get("./src/main/resources/4.footer.txt");
+        Path path = Paths.get("./src/main/resources/our_template/4.footer.txt");
         if (foot.equals("true")) {
             try {
                 footer = Files.readString(path, StandardCharsets.US_ASCII);
@@ -100,7 +100,7 @@ public class Builder {
      * @return
      */
     public Builder setPostFooter() {
-        Path path = Paths.get("./src/main/resources/5.post_footer.txt");
+        Path path = Paths.get("./src/main/resources/our_template/5.post_footer.txt");
         try {
             postFooter = Files.readString(path, StandardCharsets.US_ASCII);
         } catch (IOException ex) {
