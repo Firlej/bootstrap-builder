@@ -21,6 +21,14 @@ public class BuilderRequest {
         return header;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
     public String getAuthor() {
         return author;
     }
