@@ -1,3 +1,8 @@
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.988.0" data-gr-ext-installed="">
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
 	<a class="navbar-brand" href="#">Navbar</a>
 

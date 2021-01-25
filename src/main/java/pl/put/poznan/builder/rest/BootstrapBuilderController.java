@@ -15,7 +15,7 @@ public class BootstrapBuilderController {
 
     @GetMapping("/builder")
     public String builderFrom(Model model) {
-        model.addAttribute("request", new BuilderRequest("fixed","true"));
+        model.addAttribute("request", new BuilderRequest("fixed","true", "null", "null"));
         return "ui";
     }
 
@@ -24,8 +24,10 @@ public class BootstrapBuilderController {
 
         logger.info("header: " + builderRequest.getHeader());
         logger.info("footer: " + builderRequest.getFooter());
+        logger.info("author: " + builderRequest.getAuthor());
+        logger.info("keywords: " + builderRequest.getKeywords());
 
-        String template = Director.construct(builderRequest.getHeader(), builderRequest.getFooter()).toString();
+        String template = Director.construct(builderRequest.getHeader(), builderRequest.getFooter(), builderRequest.getAuthor(), builderRequest.getKeywords()).toString();
         model.addAttribute("template", template);
         return "return";
     }

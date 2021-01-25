@@ -18,11 +18,20 @@
         </p>
 
         <p>
-            <h5>Footer:</h5>
+        <h5>Footer:</h5>
             <input type="radio" id="true" name="footer" value="true" th:field="*{footer}">
             <label for="true">true</label><br>
             <input type="radio" id="false" name="footer" value="false" th:field="*{footer}">
             <label for="false">false</label><br>
+        </p>
+
+        <p>
+        <h5>Meta tags:</h5>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" th:field="*{author}">
+            <br>
+            <label for="keywords">Keywords:</label>
+            <input type="text" id="keywords" name="keywords" th:field="*{keywords}">
         </p>
 
         <input type="submit" value="Submit">

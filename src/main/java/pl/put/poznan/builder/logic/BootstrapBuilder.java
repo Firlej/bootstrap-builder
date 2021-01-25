@@ -6,6 +6,7 @@ package pl.put.poznan.builder.logic;
 public class BootstrapBuilder {
 
     private String preHeader;
+    private String meta;
     private String header;
     private String postHeader;
     private String footer;
@@ -14,8 +15,9 @@ public class BootstrapBuilder {
     /**
     Class constructor
      */
-    public BootstrapBuilder(String preHeader, String header, String postHeader, String footer, String postFooter) {
+    public BootstrapBuilder(String preHeader, String meta, String header, String postHeader, String footer, String postFooter) {
         this.preHeader = preHeader;
+        this.meta = meta;
         this.header = header;
         this.postHeader = postHeader;
         this.footer = footer;
@@ -31,6 +33,9 @@ public class BootstrapBuilder {
         String page = "";
         if (preHeader != null) {
             page += preHeader;
+        }
+        if (meta != null) {
+            page += meta;
         }
         if (header != null) {
             page += header;
@@ -51,6 +56,10 @@ public class BootstrapBuilder {
 
     public String getPreHeader() {
         return preHeader;
+    }
+
+    public String getMeta() {
+        return meta;
     }
 
     public String getHeader() {

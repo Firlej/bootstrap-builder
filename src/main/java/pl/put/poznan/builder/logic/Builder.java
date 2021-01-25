@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 public class Builder {
 
     private String preHeader;
+    private String meta;
     private String header;
     private String postHeader;
     private String footer;
@@ -60,6 +61,23 @@ public class Builder {
             ex.printStackTrace();
         }
 
+        return this;
+    }
+
+    /**
+     * Sets chosen meta
+     * @param author String
+     * @param keywords String
+     * @return Builder
+     */
+    public Builder setMeta(String author, String keywords) {
+        meta = "" +
+                "<meta name=\"author\" content=\"" +
+                author +
+                "\">\n" +
+                "<meta name=\"keywords\" content=\"" +
+                keywords +
+                "\">\n";
         return this;
     }
 
@@ -114,6 +132,6 @@ public class Builder {
      * @return BootstrapBuilder
      */
     public BootstrapBuilder build() {
-        return new BootstrapBuilder(preHeader, header, postHeader, footer, postFooter);
+        return new BootstrapBuilder(preHeader, meta, header, postHeader, footer, postFooter);
     }
 }
