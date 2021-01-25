@@ -15,7 +15,7 @@ public class BuilderRequestTest {
     }
 
     @Test
-    public void testSetHeader(){
+    public void testSetHeader() {
         String obj = "HEADER";
         request.setHeader(obj);
         assertEquals(obj, request.getHeader());
@@ -23,7 +23,7 @@ public class BuilderRequestTest {
     }
 
     @Test
-    public void testSetFooter(){
+    public void testSetFooter() {
         String obj = "FOOTER";
         request.setFooter(obj);
         assertEquals(obj, request.getFooter());
@@ -31,7 +31,7 @@ public class BuilderRequestTest {
     }
 
     @Test
-    public void testGetHeader(){
+    public void testGetHeader() {
         assertNull(request.getHeader());
         String obj1 = "HEADER";
         request.setHeader(obj1);
@@ -39,7 +39,7 @@ public class BuilderRequestTest {
     }
 
     @Test
-    public void testGetFooter(){
+    public void testGetFooter() {
         assertNull(request.getFooter());
         String obj1 = "FOOTER";
         request.setFooter(obj1);
@@ -47,7 +47,7 @@ public class BuilderRequestTest {
     }
 
     @Test
-    public void testToString(){
+    public void testToString() {
         String obj1 = "HEADER";
         request.setHeader(obj1);
         request.getHeader();
