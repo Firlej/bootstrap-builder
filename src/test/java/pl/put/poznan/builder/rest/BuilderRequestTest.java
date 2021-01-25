@@ -1,5 +1,6 @@
 package pl.put.poznan.builder.rest;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BuilderRequestTest {
     private BuilderRequest request;
-    private String header;
-    private String footer;
 
     @BeforeEach
     public void setUp(){
@@ -62,6 +61,8 @@ public class BuilderRequestTest {
         assertEquals(object1, request.toString());
     }
 
-
-
+    @AfterEach
+    void tearDown() {
+        request = null;
+    }
 }
