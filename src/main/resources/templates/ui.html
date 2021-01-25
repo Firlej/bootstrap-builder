@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Bootstrap builder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Bootstrap-Builder</h1>
+
+    <form action="#" th:action="@{/builder}" th:object="${request}" method="POST">
+        <p>
+            <h5>Header:</h5>
+            <input type="radio" id="fixed" name="header" value="fixed" th:field="*{header}">
+            <label for="fixed">fixed</label><br>
+            <input type="radio" id="static" name="header" value="static" th:field="*{header}">
+            <label for="static">static</label><br>
+        </p>
+
+        <p>
+            <h5>Footer:</h5>
+            <input type="radio" id="true" name="footer" value="true" th:field="*{footer}">
+            <label for="true">true</label><br>
+            <input type="radio" id="false" name="footer" value="false" th:field="*{footer}">
+            <label for="false">false</label><br>
+        </p>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
